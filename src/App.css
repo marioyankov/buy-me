@@ -1,38 +1,202 @@
-.App {
-  text-align: center;
+@import url('https://use.fontawesome.com/releases/v5.15.4/css/all.css');
+
+*, *::after, *::before {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* navbar styling */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-wrap: wrap;
+  width: 100%;
+  background: #8875F0;
+  border-bottom: 3px solid black;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.nav li {
+  list-style: none;
+}
+
+.nav a {
+  text-decoration: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav img{
+  padding: 15px 35px;
+  width: 200px;
+}
+
+.nav nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-content: center;
+  padding-right: 20px;
+}
+
+.nav nav ul .nav-btn {
+  font-size: 20px;
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 12px;
+  margin-left: 15px;
+}
+
+.nav nav ul .nav-icon {
+  font-size: 20px;
+  padding: 10px 5px;
+}
+
+/* articles common styling */
+
+.tech .tech-img,
+.gadgets .gadgets-img,
+.auto .auto-img {
+  max-width: 1200px;
+  max-height: 630px;
+  margin: 0 120px;
+}
+
+.tech-img img,
+.gadgets-img img,
+.auto .auto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* tech article styling */
+
+.tech .tech-article {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  padding: 45px 0;
+}
+
+.tech .tech-title {
+  z-index: 2;
+  font-size: 55px;
+  position: absolute;
+  left: 30%;
+  top: 15%;
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+.tech .tech-btn {
+  z-index: 2;
+  font-size: 35px;
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  color: white;
+  text-decoration: none;
+  border: 2px solid white;
+  padding: 15px 25px;
+  border-radius: 18px;
+  background: #1D2733;
+}
+
+/* gadgets styling */
+
+.gadgets .gadgets-article {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  padding: 45px 0;
+}
+
+.gadgets .gadgets-title {
+  z-index: 2;
+  font-size: 55px;
+  position: absolute;
+  left: 45%;
+  top: 20%;
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+.gadgets .gadgets-btn {
+  z-index: 2;
+  font-size: 35px;
+  position: absolute;
+  left: 35%;
+  top: 70%;
+  color: white;
+  text-decoration: none;
+  border: 2px solid white;
+  padding: 15px 25px;
+  border-radius: 18px;
+  background: #1D2733;
+}
+
+/* auto styling */
+
+.auto .auto-article {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  padding: 45px 0;
+}
+
+.auto .auto-title {
+  z-index: 2;
+  font-size: 55px;
+  position: absolute;
+  left: 65%;
+  top: 20%;
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+.auto .auto-btn {
+  z-index: 2;
+  font-size: 35px;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  color: white;
+  text-decoration: none;
+  border: 2px solid white;
+  padding: 15px 25px;
+  border-radius: 18px;
+  background: #1D2733;
+}
+
+/* toys styling */
+
+
+/* footer styling */
+
+footer {
+  background: #8875F0;
+  color: white;
+  text-align: center;
+  padding: 20px 25px;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #1D2733;
 }
