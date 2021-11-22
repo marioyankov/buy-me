@@ -1,4 +1,4 @@
-function Navbar() {
+const Navbar = () => {
     return (
         <section className="nav">
             <nav>

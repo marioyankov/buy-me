@@ -2,14 +2,20 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer';
-import CategoryCard from './components/CategoryCard';
+import AutoCard from './components/AutoCard';
+import TechCard from './components/TechCard';
+import GadgetsCard from './components/GadgetsCard';
+import ToysCard from './components/ToysCard';
 
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <CategoryCard />
+      <TechCard />
+      <GadgetsCard />
+      <AutoCard />
+      <ToysCard />
       <Footer />
     </div>
   );
