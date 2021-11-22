@@ -1,10 +1,8 @@
-import logo from '../logo.png'
-
 function Navbar() {
     return (
         <section className="nav">
             <nav>
-                <img src={logo} alt="Buy me logo" />
+                <img src="/images/logo.png" alt="Buy me logo" />
                 <ul>
                     <li className="nav-btn">
                         <a href="#">Home</a>

@@ -1,4 +1,4 @@
-function AutoArticle() {
+function AutoCard() {
     return (
         <section className="auto">
             <article className="auto-article">
@@ -12,4 +12,4 @@ function AutoArticle() {
     );
 }
 
-export default AutoArticle;
+export default AutoCard;

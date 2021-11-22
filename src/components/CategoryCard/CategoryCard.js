@@ -1,4 +1,4 @@
-function TechArticle() {
+function CategoryCard() {
     return (
         <section className="tech">
             <article className="tech-article">
@@ -9,7 +9,7 @@ function TechArticle() {
                 <a href="#" className='tech-btn'>More</a>
             </article>
         </section>
-    );
+    )
 }
 
-export default TechArticle;
+export default CategoryCard;

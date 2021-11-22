@@ -1,4 +1,4 @@
-function TechArticle() {
+function TechCard() {
     return (
         <section className="tech">
             <article className="tech-article">
@@ -12,4 +12,4 @@ function TechArticle() {
     );
 }
 
-export default TechArticle;
+export default TechCard;

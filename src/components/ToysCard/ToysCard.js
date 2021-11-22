@@ -1,4 +1,4 @@
-function ToysArticle() {
+function ToysCard() {
     return (
         <section className="toys">
             <article className="toys-article">
@@ -12,4 +12,4 @@ function ToysArticle() {
     );
 }
 
-export default ToysArticle;
+export default ToysCard;
