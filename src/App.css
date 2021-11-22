@@ -127,7 +127,6 @@ body {
   object-fit: contain;
 }
 
-
 /* footer styling */
 
 footer {
@@ -141,6 +140,5 @@ footer {
 
 footer a {
   text-decoration: none;
-  /* color: #1D2733; */
   color: #8875F0;
 }

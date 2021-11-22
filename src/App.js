@@ -1,21 +1,20 @@
-// import logo from './logo.svg';
+import { Route, Switch } from 'react-router-dom';
+
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer';
-import AutoCard from './components/AutoCard';
-import TechCard from './components/TechCard';
-import GadgetsCard from './components/GadgetsCard';
-import ToysCard from './components/ToysCard';
+import Home from './components/Home';
 
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <TechCard />
-      <GadgetsCard />
-      <AutoCard />
-      <ToysCard />
+
+      <Switch>
+        <Route path="/" exact component={Home}></Route>
+      </Switch>
+
       <Footer />
     </div>
   );

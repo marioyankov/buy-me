@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 const TechCard = () => {
     return (
         <section className="tech">
@@ -6,7 +8,7 @@ const TechCard = () => {
                 <article className="tech-img">
                     <img src="/images/tech.jpg" alt="" />
                 </article>
-                <a href="#" className='tech-btn'>More</a>
+                <NavLink to="#" className='tech-btn'>More</NavLink>
             </article>
         </section>
     );

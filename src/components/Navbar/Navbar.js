@@ -1,29 +1,31 @@
+import { NavLink } from 'react-router-dom';
+
 const Navbar = () => {
     return (
         <section className="nav">
             <nav>
-                <img src="/images/logo.png" alt="Buy me logo" />
+                <NavLink className="home" to="/" ><img src="/images/logo.png" alt="Buy me logo" /></NavLink>
                 <ul>
                     <li className="nav-btn">
-                        <a href="#">Home</a>
+                        <NavLink to="/">Home</NavLink>
                     </li>
                     <li className="nav-btn">
-                        <a href="#">Shop</a>
+                        <NavLink to="/shop">Shop</NavLink>
                     </li>
                     <li className="nav-btn">
-                        <a href="#">Login</a>
+                        <NavLink to="/login">Login</NavLink>
                     </li>
                     <li className="nav-btn">
-                        <a href="#">Register</a>
+                        <NavLink to="/register">Register</NavLink>
                     </li>
                     <li className="nav-icon">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <NavLink to="#"><i class="fab fa-facebook"></i></NavLink>
                     </li>
                     <li className="nav-icon">
-                        <a href="#"><i class="fab fa-github"></i></a>
+                        <NavLink to="#"><i class="fab fa-github"></i></NavLink>
                     </li>
                     <li className="nav-icon">
-                        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                        <NavLink to="#"><i class="fas fa-shopping-cart"></i></NavLink>
                     </li>
                 </ul>
             </nav>

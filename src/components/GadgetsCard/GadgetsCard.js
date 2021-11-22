@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 const GadgetsCard = () => {
     return (
         <section className="gadgets">
@@ -6,7 +8,7 @@ const GadgetsCard = () => {
                 <article className="gadgets-img">
                     <img src="/images/gadgets.jpg" alt="#" />
                 </article>
-                <a href="#" className='gadgets-btn'>More</a>
+                <NavLink to="#" className='gadgets-btn'>More</NavLink>
             </article>
         </section>
     );
