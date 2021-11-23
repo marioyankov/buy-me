@@ -6,7 +6,7 @@ const ToysCard = () => {
             <article className="toys-article">
                 <h2 className="toys-title">Toys</h2>
                 <article className="toys-img">
-                    <img src="/images/toys.png" alt="#" />
+                    <img src="/images/toys.jpg" alt="#" />
                 </article>
                 <NavLink to="#" className='toys-btn'>More</NavLink>
             </article>
