@@ -7,17 +7,17 @@ import Home from './components/Home';
 
 
 function App() {
-  return (
-    <div className="App">
-      <Navbar />
+	return (
+		<div className="App">
+			<Navbar />
 
-      <Switch>
-        <Route path="/" exact component={Home}></Route>
-      </Switch>
+			<Switch>
+				<Route path="/" exact component={Home}></Route>
+			</Switch>
 
-      <Footer />
-    </div>
-  );
+			<Footer />
+		</div>
+	);
 }
 
 export default App;

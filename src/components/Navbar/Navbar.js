@@ -5,6 +5,8 @@ const Navbar = () => {
         <section className="nav">
             <nav>
                 <NavLink className="home" to="/" ><img src="/images/logo.png" alt="Buy me logo" /></NavLink>
+                <label htmlFor="toggle">&#9776;</label>
+                <input type="checkbox" id="toggle" />
                 <ul>
                     <li className="nav-btn">
                         <NavLink to="/">Home</NavLink>
