@@ -8,7 +8,7 @@ const ToysCard = () => {
                 <article className="toys-img">
                     <img src="/images/toys.jpg" alt="#" />
                 </article>
-                <NavLink to="#" className='toys-btn'>More</NavLink>
+                <NavLink to="/shop" className='toys-btn'>More</NavLink>
             </article>
         </section>
     );

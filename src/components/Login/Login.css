@@ -1,0 +1,58 @@
+.login-article {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    margin: 60px 80px;
+    padding: 40px 0;
+    border: 2px solid white;
+    border-radius: 12px;
+    box-shadow: 1px 1px 12px 3px white;
+}
+
+.login-title {
+    color: white;
+    font-size: 46px;
+    line-height: 70px;
+    text-decoration: underline;
+}
+
+.login-article label {
+    color: white;
+    margin: 25px 0;
+    font-size: 28px;
+    letter-spacing: 3px;
+}
+
+.login-article .btn-submit {
+    color: white;
+    background: #1D2733;
+    font-size: 23px;
+    border: 2px solid white;
+    padding: 15px 25px;
+    border-radius: 8px;
+}
+
+.login-article input {
+    margin-bottom: 25px;
+}
+
+.login-article #email,
+.login-article #login-password {
+    line-height: 35px;
+    width: 33%;
+    border-radius: 12px;
+}
+
+.login-text {
+    font-size: 24px;
+    padding: 20px 25px;
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.login-text a {
+    text-decoration: none;
+    color: #8875F0;
+}

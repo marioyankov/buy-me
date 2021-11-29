@@ -8,7 +8,7 @@ const AutoCard = () => {
                 <article className="auto-img">
                     <img src="/images/auto.jpg" alt="#" />
                 </article>
-                <NavLink to="#" className='auto-btn'>More</NavLink>
+                <NavLink to="/shop" className='auto-btn'>More</NavLink>
             </article>
         </section>
     );

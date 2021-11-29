@@ -22,13 +22,13 @@ const Navbar = () => {
                         <NavLink activeClassName="active-link" to="/register">Register</NavLink>
                     </li>
                     <li className="nav-icon">
-                        <NavLink to={{pathname: "https://www.facebook.com"}} target="_blank"><i class="fab fa-facebook"></i></NavLink>
+                        <NavLink to={{pathname: "https://www.facebook.com"}} target="_blank"><i className="fab fa-facebook"></i></NavLink>
                     </li>
                     <li className="nav-icon">
-                        <NavLink to={{pathname: "https://github.com/marioyankov"}} target="_blank"><i class="fab fa-github"></i></NavLink>
+                        <NavLink to={{pathname: "https://github.com/marioyankov"}} target="_blank"><i className="fab fa-github"></i></NavLink>
                     </li>
                     <li className="nav-icon">
-                        <NavLink activeClassName="active-link" to="/cart"><i class="fas fa-shopping-cart"></i></NavLink>
+                        <NavLink activeClassName="active-link" to="/cart"><i className="fas fa-shopping-cart"></i></NavLink>
                     </li>
                 </ul>
             </nav>

@@ -8,7 +8,7 @@ const TechCard = () => {
                 <article className="tech-img">
                     <img src="/images/tech.jpg" alt="" />
                 </article>
-                <NavLink to="#" className='tech-btn'>More</NavLink>
+                <NavLink to="/shop" className='tech-btn'>More</NavLink>
             </article>
         </section>
     );

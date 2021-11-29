@@ -8,7 +8,7 @@ const GadgetsCard = () => {
                 <article className="gadgets-img">
                     <img src="/images/gadgets.jpg" alt="#" />
                 </article>
-                <NavLink to="#" className='gadgets-btn'>More</NavLink>
+                <NavLink to="/shop" className='gadgets-btn'>More</NavLink>
             </article>
         </section>
     );
