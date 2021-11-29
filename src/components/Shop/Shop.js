@@ -10,13 +10,16 @@ const Shop = () => {
             .then(result => {
                 setProducts(result)
             })
+            .catch(error => {
+                console.log(error);
+            })
     }, []);
 
     return (
         <section>
             <h1>All Products</h1>
             {products.length > 0
-                ? products.map(x => <ProductCard key={x._id} product={x} />)
+                ? products.map(x => <ProductCard key={x.objectId} product={x} />)
                 : <h3>No products yet</h3>
             }
         </section>

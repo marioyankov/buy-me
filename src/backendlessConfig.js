@@ -17,7 +17,18 @@ function userLoggedIn(user) {
     console.log('user has logged in');
 }
 
+function userLoggedOut() {
+    console.log('user has been logged out');
+}
+
+function logoutUser() {
+    Backendless.UserService.logout()
+        .then(userLoggedOut)
+        .catch(gotError);
+}
+
 export {
+    logoutUser,
     userLoggedIn,
     userRegistered,
     gotError,

@@ -5,7 +5,7 @@ import { userRegistered, gotError } from '../../backendlessConfig';
 
 
 const Register = () => {
-    const Backendless = require('backendless')
+    const Backendless = require('backendless');
 
     const onRegisterHandler = (e) => {
         e.preventDefault();
