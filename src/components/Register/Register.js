@@ -1,14 +1,35 @@
 import { Link } from 'react-router-dom';
 import './Register.css';
 
+import { userRegistered, gotError } from '../../backendlessConfig';
+
 
 const Register = () => {
+    const Backendless = require('backendless')
+
     const onRegisterHandler = (e) => {
         e.preventDefault();
 
         let formData = new FormData(e.currentTarget);
         let email = formData.get('email');
         let password = formData.get('password');
+        let confirmPassword = formData.get('confirm-password');
+
+        try {
+            if (password === confirmPassword) {
+                let user = new Backendless.User();
+                user.email = email;
+                user.password = password;
+
+                Backendless.UserService.register(user)
+                    .then(userRegistered)
+                    .catch(gotError);
+            }
+        } catch (e) {
+            alert(e)
+        }
+
+
     }
 
     return (
@@ -20,10 +41,10 @@ const Register = () => {
                     <label htmlFor="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="example@example.com" />
 
-                    <label htmlFor="pass">Password:</label>
-                    <input type="password" name="password" id="register-password" />
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" name="password" id="password" />
 
-                    <label htmlFor="con-pass">Confirm Password:</label>
+                    <label htmlFor="confirm-password">Confirm Password:</label>
                     <input type="password" name="confirm-password" id="confirm-password" />
 
                     <input className="btn-submit" type="submit" value="Register" />

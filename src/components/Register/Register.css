@@ -39,7 +39,7 @@
 }
 
 .register-article #email,
-.register-article #register-password,
+.register-article #password,
 .register-article #confirm-password {
     line-height: 35px;
     width: 33%;

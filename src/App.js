@@ -1,6 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
 
-
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer';
@@ -11,7 +10,17 @@ import Shop from './components/Shop';
 
 
 function App() {
+	const Backendless = require('backendless');
+
+	async function getUser() {
+		let userObject = await Backendless.UserService.getCurrentUser()
+		console.log(userObject)
+	}
+
+	getUser();
 	
+	let userToken = Backendless.LocalCache.get("user-token")
+	console.log(userToken)
 
 	return (
 		<div className="App">

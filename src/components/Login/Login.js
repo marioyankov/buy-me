@@ -1,13 +1,21 @@
 import { Link } from 'react-router-dom';
 import './Login.css';
 
+import { gotError, userLoggedIn } from '../../backendlessConfig';
+
 const Login = () => {
+    const Backendless = require('backendless');
+
     const onFormSubmit = (e) => {
         e.preventDefault();
 
         let formData = new FormData(e.currentTarget);
         let email = formData.get('email');
         let password = formData.get('password');
+
+        Backendless.UserService.login(email, password, true)
+            .then(userLoggedIn)
+            .catch(gotError);
     };
 
     return (
