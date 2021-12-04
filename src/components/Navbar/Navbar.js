@@ -9,6 +9,9 @@ const Navbar = () => {
                 <label htmlFor="toggle">&#9776;</label>
                 <input type="checkbox" id="toggle" />
                 <ul>
+                    <li className='nav-user-info'>
+                        <p>Welcome, name</p>
+                    </li>
                     <li className="nav-btn">
                         <NavLink to="/">Home</NavLink>
                     </li>
