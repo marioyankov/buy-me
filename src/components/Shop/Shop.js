@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import ProductCard from "./ProductCard";
-import * as productService from '../services/productService';
+import * as productService from '../../services/productService';
 import './Shop.css';
 
 const Shop = () => {

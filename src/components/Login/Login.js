@@ -20,7 +20,7 @@ const Login = () => {
 
     return (
         <section className="login">
-            <form id="login" onSubmit={onFormSubmit}>
+            <form id="login" onSubmit={onFormSubmit} method="POST">
 
                 <article className="login-article">
                     <h1 className="login-title">Login</h1>
