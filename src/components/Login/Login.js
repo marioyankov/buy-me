@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom';
 import './Login.css';
 
 import { gotError, userLoggedIn } from '../../backendlessConfig';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContexts';
 
 const Login = () => {
     const Backendless = require('backendless');
+    const { login } = useContext(AuthContext);
 
     const onFormSubmit = (e) => {
         e.preventDefault();
@@ -14,7 +17,12 @@ const Login = () => {
         let password = formData.get('password');
 
         Backendless.UserService.login(email, password, true)
-            .then(userLoggedIn)
+            .then(authData => {
+                login(authData);
+                console.log(authData)
+                userLoggedIn();
+                // TODO navigate
+            })
             .catch(gotError);
     };
 

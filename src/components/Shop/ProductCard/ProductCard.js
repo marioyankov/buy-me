@@ -12,9 +12,9 @@ const ProductCard = ({
             <section className="product-info">
                 <h3 className="product-title">{product.name}</h3>
                 <h4 className="product-type">Type: {product.type}</h4>
-                <p className="product-description">Description: {product.description}</p>
+                {/* <p className="product-description">Description: {product.description}</p> */}
                 <p className="product-price">Price: {product.price}</p>
-                <Link to='#' className="details-btn">Details</Link>
+                <Link to={`/details/${product.objectId}`} className="details-btn">Details</Link>
             </section>
         </article>
     )

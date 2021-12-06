@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AuthContext } from './contexts/AuthContexts';
 
@@ -11,27 +11,29 @@ import Logout from './components/Logout';
 import Register from './components/Register/Register';
 import Shop from './components/Shop';
 import Create from './components/Create';
+import ProductDetailsCard from './components/Shop/ProductDetailsCard';
 
+
+const initialAuthState = {
+	userToken: '',
+	email: '',
+	objectId: ''
+}
 
 function App() {
-	const Backendless = require('backendless');
-	const [user, setUser] = useState({email: ''});
+	const [user, setUser] = useState({ email: '' });
 
-	useEffect(() => {
-		// let userObject = await Backendless.UserService.getCurrentUser()
-		Backendless.UserService.getCurrentUser()
-			.then(authData => {
-				setUser(authData)
-				console.log(authData)
-			})
-			.catch(err => {
-				setUser({email: ''})
-				console.log(err)
-			})
-	}, [Backendless]);
+	const login = (authData) => {
+		setUser(authData);
+		console.log(user)
+	}
+
+	const logout = () => {
+		setUser(initialAuthState);
+	}
 
 	return (
-		<AuthContext.Provider value={user}>
+		<AuthContext.Provider value={{ user, login, logout }}>
 			<div className="App">
 				<Navbar />
 
@@ -42,6 +44,7 @@ function App() {
 					<Route path="/register" component={Register} />
 					<Route path="/shop" component={Shop} />
 					<Route path="/create" component={Create} />
+					<Route path="/details/:productId" component={ProductDetailsCard} />
 				</Switch>
 
 				<Footer />

@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
-    // const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
-    // let currentUser = {...user}
+    let currentUser = { ...user }
 
     let guestNavigation = (
         <>
@@ -26,6 +26,9 @@ const Navbar = () => {
                 <NavLink activeClassName="active-link" to="/create">Create</NavLink>
             </li>
             <li className="nav-btn">
+                <NavLink activeClassName="active-link" to="/my-products">My Products</NavLink>
+            </li>
+            <li className="nav-btn">
                 <NavLink activeClassName="active-link" to="/logout">Logout</NavLink>
             </li>
             <li className="nav-icon">
@@ -41,9 +44,7 @@ const Navbar = () => {
                 <label htmlFor="toggle">&#9776;</label>
                 <input type="checkbox" id="toggle" />
                 <ul>
-                    <li className='nav-user-info'>
-                        {/* <p>Welcome, {currentUser.email ? currentUser.email : 'Guest'}</p> */}
-                    </li>
+                    <span className='nav-user-text'>Welcome, {user.email ? `${user.email} !` : 'Guest !'}</span>
                     <li className="nav-btn">
                         <NavLink to="/">Home</NavLink>
                     </li>
@@ -51,10 +52,10 @@ const Navbar = () => {
                         <NavLink activeClassName="active-link" to="/shop">Shop</NavLink>
                     </li>
 
-                    {/* {currentUser.email
+                    {currentUser.email
                         ? userNavigation
                         : guestNavigation
-                    } */}
+                    }
 
                     <li className="nav-icon">
                         <NavLink to={{ pathname: "https://www.facebook.com" }} target="_blank"><i className="fab fa-facebook"></i></NavLink>

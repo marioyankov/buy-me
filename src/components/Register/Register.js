@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContexts';
 import './Register.css';
 
 import { userRegistered, gotError } from '../../backendlessConfig';
@@ -6,6 +8,7 @@ import { userRegistered, gotError } from '../../backendlessConfig';
 
 const Register = () => {
     const Backendless = require('backendless');
+    const { login } = useContext(AuthContext);
 
     const onRegisterHandler = (e) => {
         e.preventDefault();
@@ -22,7 +25,11 @@ const Register = () => {
                 user.password = password;
 
                 Backendless.UserService.register(user)
-                    .then(userRegistered)
+                    .then(authData => {
+                        login(authData);
+                        userRegistered();
+                        // TODO: navigate
+                    })
                     .catch(gotError);
             }
         } catch (e) {

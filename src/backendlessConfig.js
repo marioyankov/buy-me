@@ -9,6 +9,7 @@ function userRegistered(user) {
 }
 
 function gotError(error) {
+    //TODO: show notification
     console.log(`error message: ${error.message}`);
     console.log(`error code: ${error.statusCode}`);
 }
