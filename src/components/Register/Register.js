@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContexts';
 import './Register.css';
@@ -8,6 +8,7 @@ import { userRegistered, gotError } from '../../backendlessConfig';
 
 const Register = () => {
     const Backendless = require('backendless');
+    const navigate = useNavigate();
     const { login } = useContext(AuthContext);
 
     const onRegisterHandler = (e) => {
@@ -28,7 +29,7 @@ const Register = () => {
                     .then(authData => {
                         login(authData);
                         userRegistered();
-                        // TODO: navigate
+                        navigate('/');
                     })
                     .catch(gotError);
             }

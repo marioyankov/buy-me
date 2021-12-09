@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 import { gotError, userLoggedIn } from '../../backendlessConfig';
@@ -7,6 +7,7 @@ import { AuthContext } from '../../contexts/AuthContexts';
 
 const Login = () => {
     const Backendless = require('backendless');
+    const navigate = useNavigate();
     const { login } = useContext(AuthContext);
 
     const onFormSubmit = (e) => {
@@ -21,7 +22,7 @@ const Login = () => {
                 login(authData);
                 console.log(authData)
                 userLoggedIn();
-                // TODO navigate
+                navigate('/');
             })
             .catch(gotError);
     };
