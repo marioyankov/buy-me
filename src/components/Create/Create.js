@@ -1,6 +1,29 @@
+import { useNavigate } from 'react-router-dom';
+import * as productService from '../../services/productService';
+
 const Create = () => {
+    const navigate = useNavigate();
+
     const onProductCreate = (e) => {
         e.preventDefault();
+        let formData = new FormData(e.currentTarget);
+
+        let name = formData.get('product-name');
+        let type = formData.get('product-type');
+        let imageUrl = formData.get('imageUrl');
+        let price = formData.get('product-price');
+        let description = formData.get('product-description');
+
+        productService.create({
+            name,
+            type,
+            imageUrl,
+            price,
+            description
+        })
+        .then(() => {
+            navigate('/shop')
+        })
     };
 
     return (
@@ -8,7 +31,7 @@ const Create = () => {
             <form id="create-form" onSubmit={onProductCreate} method="POST">
 
                 <article className="create-article">
-                    <h1 className="create-title">Login</h1>
+                    <h1 className="create-title">Create</h1>
 
                     <label htmlFor="product-name">Name:</label>
                     <input
