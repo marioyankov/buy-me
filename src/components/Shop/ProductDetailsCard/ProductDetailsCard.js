@@ -1,10 +1,26 @@
+import { useContext } from 'react';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthContexts';
 import * as productService from '../../../services/productService';
 
+import './ProductDetailsCard.css';
+
 const ProductDetailsCard = () => {
+    const { user } = useContext(AuthContext);
     const [product, setProduct] = useState([]);
     const { productId } = useParams();
+
+    let currentUser = { ...user }
+
+    const ownerButtons = (
+        <>
+            <Link className="button" to={`/edit/${productId}`}>Edit</Link>
+            <button className="button">Delete</button>
+        </>
+    );
+
+    const userButtons = <button className="button">Buy</button>;
 
     useEffect(() => {
         productService.getOneProduct(productId)
@@ -17,7 +33,7 @@ const ProductDetailsCard = () => {
     }, [productId]);
 
     return (
-        <article className="product">
+        <section className="product">
             <section className="product-img">
                 <img src={product.imageUrl} alt='#' />
             </section>
@@ -26,9 +42,12 @@ const ProductDetailsCard = () => {
                 <h4 className="product-type">Type: {product.type}</h4>
                 <p className="product-description">Description: {product.description}</p>
                 <p className="product-price">Price: {product.price}</p>
-                <button className="buy-btn">Buy</button>
+                {currentUser.email
+                        ? ownerButtons
+                        : userButtons
+                    }
             </section>
-        </article>
+        </section>
     )
 }
 

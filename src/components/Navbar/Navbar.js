@@ -38,7 +38,7 @@ const Navbar = () => {
     );
 
     return (
-        <section className="nav">
+        <article className="nav">
             <nav>
                 <NavLink className="home" to="/" ><img src="/images/logo.png" alt="Buy me logo" /></NavLink>
                 <label htmlFor="toggle">&#9776;</label>
@@ -65,7 +65,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </nav>
-        </section>
+        </article>
     );
 }
 

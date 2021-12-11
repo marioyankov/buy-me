@@ -34,6 +34,13 @@
     border-radius: 8px;
 }
 
+.login-article .btn-submit:hover {
+    cursor: pointer;
+    background: white;
+    color: #1D2733;
+    transition: all 0.3s ease;
+}
+
 .login-article input {
     margin-bottom: 25px;
 }

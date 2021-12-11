@@ -44,12 +44,19 @@
     padding-right: 20px;
   }
   
-  .nav nav ul .nav-btn {
+  .nav nav ul .nav-btn a {
     font-size: 20px;
     padding: 10px 20px;
     border: 1px solid white;
     border-radius: 12px;
     margin-left: 15px;
+  }
+
+  .nav nav ul .nav-btn a:hover {
+    cursor: pointer;
+    background: white;
+    color: #1D2733;
+    transition: all 0.3s ease;
   }
   
   .nav nav ul .nav-icon {

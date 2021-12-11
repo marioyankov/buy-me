@@ -4,8 +4,18 @@
   box-sizing: border-box;
 }
 
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   background: #1D2733;
+}
+
+section {
+  flex: 1 0 auto;
 }
 
 /* articles common styling */
@@ -51,6 +61,16 @@ body {
   padding: 15px 25px;
   border-radius: 18px;
   background: #1D2733;
+}
+
+.tech .tech-btn:hover,
+.gadgets .gadgets-btn:hover,
+.auto .auto-btn:hover,
+.toys .toys-btn:hover {
+  cursor: pointer;
+    background: white;
+    color: #1D2733;
+    transition: all 0.3s ease;
 }
 
 .tech-img,

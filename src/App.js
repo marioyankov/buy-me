@@ -14,6 +14,7 @@ import Create from './components/Create';
 import ProductDetailsCard from './components/Shop/ProductDetailsCard';
 import MyProducts from './components/MyProducts';
 import Cart from './components/Cart';
+import Edit from './components/Edit';
 
 
 const initialAuthState = {
@@ -47,6 +48,7 @@ function App() {
 					<Route path="/shop" element={<Shop />} />
 					<Route path="/create" element={<Create />} />
 					<Route path="/details/:productId" element={<ProductDetailsCard />} />
+					<Route path="/edit/:productId" element={<Edit />} />
 					<Route path='/my-products' element={<MyProducts />} />
 					<Route path='/cart' element={<Cart />} />
 				</Routes>

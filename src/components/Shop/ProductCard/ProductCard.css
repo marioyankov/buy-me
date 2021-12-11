@@ -67,3 +67,10 @@
     border-radius: 8px;
     text-decoration: none;
 }
+
+.details-btn:hover {
+    cursor: pointer;
+    background: white;
+    color: #1D2733;
+    transition: all 0.3s ease;
+}

@@ -5,12 +5,12 @@ import ToysCard from '../ToysCard'
 
 const Home = () => {
     return (
-        <main>
+        <section>
             <TechCard />
             <GadgetsCard />
             <AutoCard />
             <ToysCard />
-        </main>
+        </section>
     )
 }
 
