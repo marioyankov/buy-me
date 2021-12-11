@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import * as productService from '../../services/productService';
 
+import './Create.css';
+
 const Create = () => {
     const navigate = useNavigate();
 
@@ -67,7 +69,7 @@ const Create = () => {
                         name="product-description"
                     />
 
-                    <input type="submit" className="btn-submit" value="Create Product" />
+                    <button type="submit" className="btn-submit" >Create Product</button>
                 
                 </article>
             </form>
