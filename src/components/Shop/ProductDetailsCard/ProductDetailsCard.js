@@ -7,16 +7,24 @@ import * as productService from '../../../services/productService';
 import './ProductDetailsCard.css';
 
 const ProductDetailsCard = () => {
+    const navigate = useNavigate(); 
     const { user } = useContext(AuthContext);
     const [product, setProduct] = useState([]);
     const { productId } = useParams();
 
     let currentUser = { ...user }
 
+    const deleteHandler = (e) => {
+        e.preventDefault();
+
+        productService.deleteProduct(product);
+        navigate('/my-products');
+    }
+
     const ownerButtons = (
         <>
             <Link className="button" to={`/edit/${productId}`}>Edit</Link>
-            <button className="button">Delete</button>
+            <button className="button" onClick={deleteHandler}>Delete</button>
         </>
     );
 

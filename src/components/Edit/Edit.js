@@ -27,7 +27,8 @@ const Edit = () => {
         let price = formData.get('product-price');
         let description = formData.get('product-description');
 
-        productService.create({
+        productService.edit({
+            objectId: productId,
             name,
             type,
             imageUrl,
@@ -88,7 +89,7 @@ const Edit = () => {
                         defaultValue={product.description}
                     />
 
-                    <button type="submit" className="btn-submit" >Create Product</button>
+                    <button type="submit" className="btn-submit" >Edit Product</button>
                 
                 </article>
             </form>

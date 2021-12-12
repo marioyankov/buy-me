@@ -14,10 +14,6 @@ body {
   background: #1D2733;
 }
 
-section {
-  flex: 1 0 auto;
-}
-
 /* articles common styling */
 
 .tech .tech-article,
