@@ -1,28 +1,48 @@
-const Backendless = require('backendless');
+import { Backendless } from '../backendlessConfig';
 
-export function getAllProducts() {
-    return Backendless.Data.of('products').find()     
+export const getAllProducts = async () => {
+    let result = await Backendless.Data.of('products').find();
+
+    return result;
 }
 
-export function getOneProduct(id) {
-    return Backendless.Data.of('products').findById({objectId:id})
+export const getOneProduct = async (id) => {
+    let result = await Backendless.Data.of('products').findById({ objectId: id });
+
+    return result;
 }
 
-export function getMyProducts(ownerId) {
+export const getMyProducts = async (ownerId) => {
     let whereClause = `ownerId = '${ownerId}'`;
     let query = Backendless.DataQueryBuilder.create().setWhereClause(whereClause);
-    
-    return Backendless.Data.of('products').find(query);
+
+    let result = await Backendless.Data.of('products').find(query);
+    return result;
 }
 
-export function create(product) {
-    return Backendless.Data.of('products').save(product);
+export const create = async (product) => {
+    let result = await Backendless.Data.of('products').save(product);
+
+    return result;
 }
 
-export function edit(product) {
-    return Backendless.Data.of('products').save(product);
+export const edit = async (product, userId) => {
+    if (product.ownerId === userId) {
+        let result = await Backendless.Data.of('products').save(product);
+
+        return result;
+    } else {
+        // notify
+    }
+
 }
 
-export function deleteProduct(product) {
-    return Backendless.Data.of('products').remove(product);
+export const deleteProduct = async (product, userId) => {
+    if (product.ownerId === userId) {
+        let result = await Backendless.Data.of('products').remove(product);
+
+        return result;
+    } else {
+        //notify
+    }
 }

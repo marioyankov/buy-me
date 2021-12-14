@@ -12,10 +12,10 @@ const Navbar = () => {
     let guestNavigation = (
         <>
             <li className="nav-btn">
-                <NavLink activeClassName="active-link" to="/login">Login</NavLink>
+                <NavLink className="active-link" to="/login">Login</NavLink>
             </li>
             <li className="nav-btn">
-                <NavLink activeClassName="active-link" to="/register">Register</NavLink>
+                <NavLink className="active-link" to="/register">Register</NavLink>
             </li>
         </>
     );
@@ -23,16 +23,16 @@ const Navbar = () => {
     let userNavigation = (
         <>
             <li className="nav-btn">
-                <NavLink activeClassName="active-link" to="/create">Create</NavLink>
+                <NavLink className="active-link" to="/create">Create</NavLink>
             </li>
             <li className="nav-btn">
-                <NavLink activeClassName="active-link" to="/my-products">My Products</NavLink>
+                <NavLink className="active-link" to="/my-products">My Products</NavLink>
             </li>
             <li className="nav-btn">
-                <NavLink activeClassName="active-link" to="/logout">Logout</NavLink>
+                <NavLink className="active-link" to="/logout">Logout</NavLink>
             </li>
             <li className="nav-icon">
-                <NavLink activeClassName="active-link" to="/cart"><i className="fas fa-shopping-cart"></i></NavLink>
+                <NavLink className="active-link" to="/cart"><i className="fas fa-shopping-cart"></i></NavLink>
             </li>
         </>
     );
@@ -49,7 +49,7 @@ const Navbar = () => {
                         <NavLink to="/">Home</NavLink>
                     </li>
                     <li className="nav-btn">
-                        <NavLink activeClassName="active-link" to="/shop">Shop</NavLink>
+                        <NavLink className="active-link" to="/shop">Shop</NavLink>
                     </li>
 
                     {currentUser.email

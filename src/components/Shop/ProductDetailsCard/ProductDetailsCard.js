@@ -1,29 +1,33 @@
-import { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { AuthContext } from '../../../contexts/AuthContexts';
+import { useAuthContext } from '../../../contexts/AuthContexts';
 import * as productService from '../../../services/productService';
 
 import './ProductDetailsCard.css';
 
 const ProductDetailsCard = () => {
     const navigate = useNavigate(); 
-    const { user } = useContext(AuthContext);
+    const { user } = useAuthContext();
     const [product, setProduct] = useState([]);
-    const { productId } = useParams();
-
-    let currentUser = { ...user }
+    const { objectId } = useParams();
 
     const deleteHandler = (e) => {
         e.preventDefault();
 
-        productService.deleteProduct(product);
-        navigate('/my-products');
+        if (user.objectId === product.ownerId) {
+            productService.deleteProduct(product, user.objectId)
+                .then(() => {
+                    navigate('/my-products');
+                })
+        } else {
+            // notify
+            navigate('/my-products');
+        }
     }
 
     const ownerButtons = (
         <>
-            <Link className="button" to={`/edit/${productId}`}>Edit</Link>
+            <Link className="button" to={`/edit/${objectId}`}>Edit</Link>
             <button className="button" onClick={deleteHandler}>Delete</button>
         </>
     );
@@ -31,14 +35,14 @@ const ProductDetailsCard = () => {
     const userButtons = <button className="button">Buy</button>;
 
     useEffect(() => {
-        productService.getOneProduct(productId)
+        productService.getOneProduct(objectId)
             .then(result => {
                 setProduct(result)
             })
             .catch(error => {
                 console.log(error);
             })
-    }, [productId]);
+    }, [objectId]);
 
     return (
         <section className="product">
@@ -50,10 +54,10 @@ const ProductDetailsCard = () => {
                 <h4 className="product-type">Type: {product.type}</h4>
                 <p className="product-description">Description: {product.description}</p>
                 <p className="product-price">Price: {product.price}</p>
-                {currentUser.email
+                {user.email && (user.objectId === product.ownerId
                         ? ownerButtons
                         : userButtons
-                    }
+                    )}
             </section>
         </section>
     )

@@ -1,15 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContexts';
+import { useAuthContext } from '../../contexts/AuthContexts';
+import * as authService from '../../services/authService';
+
 import './Register.css';
 
-import { userRegistered, gotError } from '../../backendlessConfig';
-
-
 const Register = () => {
-    const Backendless = require('backendless');
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
+    const { login } = useAuthContext();
+
 
     const onRegisterHandler = (e) => {
         e.preventDefault();
@@ -19,26 +17,18 @@ const Register = () => {
         let password = formData.get('password');
         let confirmPassword = formData.get('confirm-password');
 
-        try {
-            if (password === confirmPassword) {
-                let user = new Backendless.User();
-                user.email = email;
-                user.password = password;
-
-                Backendless.UserService.register(user)
-                    .then(authData => {
-                        login(authData);
-                        userRegistered();
-                        navigate('/');
-                    })
-                    .catch(gotError);
-            }
-        } catch (e) {
-            alert(e)
+        if (password === confirmPassword) {
+            authService.register(email, password)
+                .then(authData => {
+                    login(authData);
+                    authService.userRegistered(authData);
+                    navigate('/');
+                })
+                .catch(authService.gotError);
+        } else {
+            // notify
         }
-
-
-    }
+    };
 
     return (
         <section className="register">

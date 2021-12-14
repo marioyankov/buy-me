@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { AuthContext } from './contexts/AuthContexts';
 
 import './App.css';
+import { UserProvider } from './contexts/AuthContexts';
+import SecureRoute from './components/Common/SecureRoute';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer';
 import Home from './components/Home';
@@ -17,45 +17,28 @@ import Cart from './components/Cart';
 import Edit from './components/Edit';
 
 
-const initialAuthState = {
-	userToken: '',
-	email: '',
-	objectId: ''
-}
-
 function App() {
-	const [user, setUser] = useState({ email: '' });
-
-	const login = (authData) => {
-		setUser(authData);
-		console.log(user)
-	}
-
-	const logout = () => {
-		setUser(initialAuthState);
-	}
-
 	return (
-		<AuthContext.Provider value={{ user, login, logout }}>
+		<UserProvider>
 			<div className="App">
 				<Navbar />
-
 				<Routes>
 					<Route path="/" element={<Home />}></Route>
 					<Route path="/login" element={<Login />} />
 					<Route path="/logout" element={<Logout />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/shop" element={<Shop />} />
-					<Route path="/create" element={<Create />} />
-					<Route path="/details/:productId" element={<ProductDetailsCard />} />
-					<Route path="/edit/:productId" element={<Edit />} />
-					<Route path='/my-products' element={<MyProducts />} />
-					<Route path='/cart' element={<Cart />} />
+					<Route path="/details/:objectId" element={<ProductDetailsCard />} />
+					<Route element={<SecureRoute />}>
+						<Route path="/create" element={<Create />} />
+						<Route path="/edit/:objectId" element={<Edit />} />
+						<Route path='/my-products' element={<MyProducts />} />
+						<Route path='/cart' element={<Cart />} />
+					</Route>
 				</Routes>
-
 				<Footer />
 			</div>
-		</AuthContext.Provider>
+		</UserProvider>
 	);
 }
 

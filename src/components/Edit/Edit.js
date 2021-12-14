@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useAuthContext } from '../../contexts/AuthContexts';
 import * as productService from '../../services/productService';
 
 const Edit = () => {
     const navigate = useNavigate();
+    const { user } = useAuthContext();
     const [product, setProduct] = useState([]);
-    const { productId } = useParams();
+    const { objectId } = useParams();
 
     useEffect(() => {
-        productService.getOneProduct(productId)
+        productService.getOneProduct(objectId)
             .then(result => {
                 setProduct(result)
             })
             .catch(error => {
                 console.log(error);
             })
-    }, [productId]);
+    }, [objectId]);
 
     const onProductEdit = (e) => {
         e.preventDefault();
@@ -27,17 +29,24 @@ const Edit = () => {
         let price = formData.get('product-price');
         let description = formData.get('product-description');
 
-        productService.edit({
-            objectId: productId,
-            name,
-            type,
-            imageUrl,
-            price,
-            description
-        })
-        .then(() => {
-            navigate('/shop')
-        })
+        if (user.objectId === product.ownerId) {
+            productService.edit({
+                objectId,
+                ownerId: product.ownerId,
+                name,
+                type,
+                imageUrl,
+                price,
+                description
+            }, user.objectId)
+                .then(() => {
+                    navigate('/my-products');
+                })
+
+        } else {
+            // notify
+            navigate('/my-products');
+        };
     };
 
     return (
@@ -90,7 +99,7 @@ const Edit = () => {
                     />
 
                     <button type="submit" className="btn-submit" >Edit Product</button>
-                
+
                 </article>
             </form>
         </section>

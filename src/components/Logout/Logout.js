@@ -1,23 +1,21 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContexts';
-
-import { gotError, userLoggedOut } from '../../backendlessConfig';
+import { useAuthContext } from '../../contexts/AuthContexts';
+import * as authService from '../../services/authService';
 
 const Logout = () => {
-    const Backendless = require('backendless');
     const navigate = useNavigate();
-    const { logout } = useContext(AuthContext);
+    const { logout } = useAuthContext();
 
     useEffect(() => {
-        Backendless.UserService.logout()
+        authService.logout()
             .then(() => {
                 logout();
-                userLoggedOut();
+                authService.userLoggedOut();
                 navigate('/');
             })
-            .catch(gotError);
-    }, [Backendless.UserService, logout])
+            .catch(authService.gotError);
+    }, [logout, navigate])
 
     return null;
 }

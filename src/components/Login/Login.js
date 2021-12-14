@@ -1,14 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
-import { gotError, userLoggedIn } from '../../backendlessConfig';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContexts';
+import { useAuthContext } from '../../contexts/AuthContexts';
+import * as authService from '../../services/authService';
 
 const Login = () => {
-    const Backendless = require('backendless');
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
+    const { login } = useAuthContext();
 
     const onFormSubmit = (e) => {
         e.preventDefault();
@@ -17,14 +15,13 @@ const Login = () => {
         let email = formData.get('email');
         let password = formData.get('password');
 
-        Backendless.UserService.login(email, password, true)
+        authService.login(email, password, true)
             .then(authData => {
                 login(authData);
-                console.log(authData)
-                userLoggedIn();
+                authService.userLoggedIn(authData);
                 navigate('/');
             })
-            .catch(gotError);
+            .catch(authService.gotError);
     };
 
     return (

@@ -1,12 +1,12 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import ProductCard from "../Shop/ProductCard";
-import { AuthContext } from '../../contexts/AuthContexts';
+import { useAuthContext } from '../../contexts/AuthContexts';
 
 import * as productService from '../../services/productService';
 
 
 const MyProducts = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuthContext();
     const [myProducts, setMyProducts] = useState([]);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const MyProducts = () => {
             .catch(error => {
                 console.log(error);
             })
-    }, []);
+    }, [user.objectId]);
 
     return (
         <section className="my-products">
