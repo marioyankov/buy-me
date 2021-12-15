@@ -1,0 +1,15 @@
+.remove-btn {
+    color: white;
+    background: #1D2733;
+    font-size: 23px;
+    border: 2px solid white;
+    padding: 15px 25px;
+    border-radius: 8px;
+}
+
+.remove-btn:hover {
+    cursor: pointer;
+    background: white;
+    color: #1D2733;
+    transition: all 0.3s ease;
+}

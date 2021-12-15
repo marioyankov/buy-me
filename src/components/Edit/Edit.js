@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContexts';
+import { useAlertContext, types } from '../../contexts/AlertContext';
+
 import * as productService from '../../services/productService';
 
 const Edit = () => {
@@ -8,6 +10,8 @@ const Edit = () => {
     const { user } = useAuthContext();
     const [product, setProduct] = useState([]);
     const { objectId } = useParams();
+    const { addAlert } = useAlertContext();
+
 
     useEffect(() => {
         productService.getOneProduct(objectId)
@@ -40,11 +44,11 @@ const Edit = () => {
                 description
             }, user.objectId)
                 .then(() => {
+                    addAlert('You have successfully edited the product!', types.success);
                     navigate('/my-products');
                 })
 
         } else {
-            // notify
             navigate('/my-products');
         };
     };

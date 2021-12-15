@@ -4,13 +4,13 @@ export const getAllProducts = async () => {
     let result = await Backendless.Data.of('products').find();
 
     return result;
-}
+};
 
 export const getOneProduct = async (id) => {
     let result = await Backendless.Data.of('products').findById({ objectId: id });
 
     return result;
-}
+};
 
 export const getMyProducts = async (ownerId) => {
     let whereClause = `ownerId = '${ownerId}'`;
@@ -18,13 +18,23 @@ export const getMyProducts = async (ownerId) => {
 
     let result = await Backendless.Data.of('products').find(query);
     return result;
-}
+};
+
+export const getCartProducts = async (userId) => {
+    let loadRelationsQueryBuilder = Backendless.LoadRelationsQueryBuilder.create();
+    loadRelationsQueryBuilder.setRelationName('cart');
+
+    let result = await Backendless.Data.of('users').loadRelations(userId, loadRelationsQueryBuilder);
+
+    return result;
+};
+
 
 export const create = async (product) => {
     let result = await Backendless.Data.of('products').save(product);
 
     return result;
-}
+};
 
 export const edit = async (product, userId) => {
     if (product.ownerId === userId) {
@@ -35,7 +45,7 @@ export const edit = async (product, userId) => {
         // notify
     }
 
-}
+};
 
 export const deleteProduct = async (product, userId) => {
     if (product.ownerId === userId) {
@@ -45,4 +55,4 @@ export const deleteProduct = async (product, userId) => {
     } else {
         //notify
     }
-}
+};

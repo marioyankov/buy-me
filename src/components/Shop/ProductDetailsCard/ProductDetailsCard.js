@@ -1,15 +1,37 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useAuthContext } from '../../../contexts/AuthContexts';
+import * as authService from '../../../services/authService';
 import * as productService from '../../../services/productService';
 
 import './ProductDetailsCard.css';
 
 const ProductDetailsCard = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const { user } = useAuthContext();
     const [product, setProduct] = useState([]);
+    const [cartProducts, setCartProducts] = useState([]);
     const { objectId } = useParams();
+
+    useEffect(() => {
+        productService.getOneProduct(objectId)
+            .then(result => {
+                setProduct(result)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }, [objectId]);
+
+    useEffect(() => {
+        productService.getCartProducts(user.objectId)
+            .then(result => {
+                setCartProducts(result)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }, [user.objectId])
 
     const deleteHandler = (e) => {
         e.preventDefault();
@@ -23,6 +45,19 @@ const ProductDetailsCard = () => {
             // notify
             navigate('/my-products');
         }
+    };
+
+    const buyHandler = () => {
+        if (cartProducts.some(object => object.objectId === product.objectId)) {
+            // notify already in cart
+            return
+        } else if (!(user.objectId === product.ownerId)) {
+            authService.updateUserCart(user.objectId, product.objectId)
+                .then(() => {
+                    console.log('buy');
+                    navigate('/cart');
+                })
+        }
     }
 
     const ownerButtons = (
@@ -32,17 +67,8 @@ const ProductDetailsCard = () => {
         </>
     );
 
-    const userButtons = <button className="button">Buy</button>;
+    const userButtons = <button className="button" onClick={buyHandler}>Buy</button>;
 
-    useEffect(() => {
-        productService.getOneProduct(objectId)
-            .then(result => {
-                setProduct(result)
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }, [objectId]);
 
     return (
         <section className="product">
@@ -55,9 +81,9 @@ const ProductDetailsCard = () => {
                 <p className="product-description">Description: {product.description}</p>
                 <p className="product-price">Price: {product.price}</p>
                 {user.email && (user.objectId === product.ownerId
-                        ? ownerButtons
-                        : userButtons
-                    )}
+                    ? ownerButtons
+                    : userButtons
+                )}
             </section>
         </section>
     )

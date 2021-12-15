@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContexts';
+import { useAlertContext, types } from '../../contexts/AlertContext';
 import * as authService from '../../services/authService';
 
 import './Register.css';
@@ -7,6 +8,7 @@ import './Register.css';
 const Register = () => {
     const navigate = useNavigate();
     const { login } = useAuthContext();
+    const { addAlert } = useAlertContext();
 
 
     const onRegisterHandler = (e) => {
@@ -22,11 +24,12 @@ const Register = () => {
                 .then(authData => {
                     login(authData);
                     authService.userRegistered(authData);
+                    addAlert('You have successfully registered!', types.success);
                     navigate('/');
                 })
                 .catch(authService.gotError);
         } else {
-            // notify
+            addAlert("Passwords don/'t match!", types.error);
         }
     };
 

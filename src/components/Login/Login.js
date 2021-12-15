@@ -2,11 +2,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 import { useAuthContext } from '../../contexts/AuthContexts';
+import { useAlertContext, types } from '../../contexts/AlertContext';
+
 import * as authService from '../../services/authService';
 
 const Login = () => {
     const navigate = useNavigate();
     const { login } = useAuthContext();
+    const { addAlert } = useAlertContext();
 
     const onFormSubmit = (e) => {
         e.preventDefault();
@@ -19,6 +22,7 @@ const Login = () => {
             .then(authData => {
                 login(authData);
                 authService.userLoggedIn(authData);
+                addAlert('You have successfully logged in!', types.success);
                 navigate('/');
             })
             .catch(authService.gotError);

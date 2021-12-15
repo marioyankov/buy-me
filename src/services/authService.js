@@ -17,6 +17,16 @@ export const register = async (email, password) => {
     return res;
 };
 
+export const updateUserCart = async (userId, productId) => {
+    let userObject = { objectId: `${userId}` };
+    let cartObject = { objectId: `${productId}` };
+    let children = [cartObject]
+
+    let result = await Backendless.Data.of('users').addRelation(userObject, 'cart', children);
+
+    return result;
+};
+
 export const logout = async () => {
     let res = await Backendless.UserService.logout();
 

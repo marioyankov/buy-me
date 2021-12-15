@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import * as productService from '../../services/productService';
+import { useAlertContext, types } from '../../contexts/AlertContext';
+
 
 import './Create.css';
 
 const Create = () => {
     const navigate = useNavigate();
+    const { addAlert } = useAlertContext();
 
     const onProductCreate = (e) => {
         e.preventDefault();
@@ -24,6 +27,7 @@ const Create = () => {
             description
         })
         .then(() => {
+            addAlert('You have successfully added a product!', types.success);
             navigate('/shop')
         })
     };
