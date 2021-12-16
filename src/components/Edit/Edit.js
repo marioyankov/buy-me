@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContexts';
+import { isAuthenticated } from '../../services/authService';
 import { useAlertContext, types } from '../../contexts/AlertContext';
 
 import * as productService from '../../services/productService';
@@ -33,7 +34,7 @@ const Edit = () => {
         let price = formData.get('product-price');
         let description = formData.get('product-description');
 
-        if (user.objectId === product.ownerId) {
+        if (isAuthenticated(user) & user.objectId === product.ownerId) {
             productService.edit({
                 objectId,
                 ownerId: product.ownerId,

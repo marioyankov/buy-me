@@ -29,7 +29,6 @@ export const getCartProducts = async (userId) => {
     return result;
 };
 
-
 export const create = async (product) => {
     let result = await Backendless.Data.of('products').save(product);
 

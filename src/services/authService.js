@@ -27,6 +27,24 @@ export const updateUserCart = async (userId, productId) => {
     return result;
 };
 
+export const removeCartProduct = async (userId, productId) => {
+    let userObject = { objectId: `${userId}` };
+    let cartObject = { objectId: `${productId}` };
+
+    let result = await Backendless.Data.of('users').deleteRelation(userObject, 'cart', [cartObject]);
+
+    return result;
+};
+
+export const buyCartProducts = async (userId, products) => {
+    let userObject = { objectId: `${userId}` };
+    let productsObject = products.map(x => ({ 'objectId': x.objectId}));
+
+    let result = await Backendless.Data.of('users').deleteRelation(userObject, 'cart', productsObject);
+
+    return result;
+}
+
 export const logout = async () => {
     let res = await Backendless.UserService.logout();
 
@@ -43,7 +61,6 @@ export const gotError = (error) => {
 }
 
 export const userLoggedIn = (user) => {
-    console.log(user)
     console.log(`${user.email} has logged in`);
 }
 

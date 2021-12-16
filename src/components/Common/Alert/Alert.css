@@ -1,14 +1,39 @@
-.error {
+.error,
+.success,
+.info {
     position: absolute;
-    margin: 0 auto;
+    font-size: 22px;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+
+.error {
+    background-color: #F66359;
 }
 
 .success {
-    position: absolute;
-    margin: 0 auto;
+    background-color: #2FB986;
 }
 
 .info {
-    position: absolute;
-    margin: 0 auto;
+    background-color: #47A8F5;
 }
+
+.close-btn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .close-btn:hover {
+    color: black;
+  }

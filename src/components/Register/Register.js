@@ -1,13 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContexts';
 import { useAlertContext, types } from '../../contexts/AlertContext';
+import { isAuthenticated } from '../../services/authService';
 import * as authService from '../../services/authService';
 
 import './Register.css';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { login } = useAuthContext();
+    const { login, user } = useAuthContext();
     const { addAlert } = useAlertContext();
 
 

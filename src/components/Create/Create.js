@@ -1,12 +1,15 @@
 import { useNavigate } from 'react-router-dom';
-import * as productService from '../../services/productService';
 import { useAlertContext, types } from '../../contexts/AlertContext';
+import { isAuthenticated } from '../../services/authService';
+import { useAuthContext } from '../../contexts/AuthContexts';
+import * as productService from '../../services/productService';
 
 
 import './Create.css';
 
 const Create = () => {
     const navigate = useNavigate();
+    const { user } = useAuthContext();
     const { addAlert } = useAlertContext();
 
     const onProductCreate = (e) => {
@@ -19,17 +22,18 @@ const Create = () => {
         let price = formData.get('product-price');
         let description = formData.get('product-description');
 
-        productService.create({
-            name,
-            type,
-            imageUrl,
-            price,
-            description
-        })
-        .then(() => {
-            addAlert('You have successfully added a product!', types.success);
-            navigate('/shop')
-        })
+        if (isAuthenticated(user)) {
+            productService.create({
+                name,
+                type,
+                imageUrl,
+                price,
+                description
+            }).then(() => {
+                addAlert('You have successfully added a product!', types.success);
+                navigate('/shop')
+            })
+        }
     };
 
     return (
@@ -74,7 +78,7 @@ const Create = () => {
                     />
 
                     <button type="submit" className="btn-submit" >Create Product</button>
-                
+
                 </article>
             </form>
         </section>

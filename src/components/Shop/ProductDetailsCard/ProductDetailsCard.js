@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useAuthContext } from '../../../contexts/AuthContexts';
+import { useAlertContext, types } from '../../../contexts/AlertContext';
 import * as authService from '../../../services/authService';
 import * as productService from '../../../services/productService';
 
@@ -12,6 +13,7 @@ const ProductDetailsCard = () => {
     const [product, setProduct] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
     const { objectId } = useParams();
+    const { addAlert } = useAlertContext();
 
     useEffect(() => {
         productService.getOneProduct(objectId)
@@ -49,12 +51,11 @@ const ProductDetailsCard = () => {
 
     const buyHandler = () => {
         if (cartProducts.some(object => object.objectId === product.objectId)) {
-            // notify already in cart
+            addAlert('You already have this product in your cart!', types.error);
             return
         } else if (!(user.objectId === product.ownerId)) {
             authService.updateUserCart(user.objectId, product.objectId)
                 .then(() => {
-                    console.log('buy');
                     navigate('/cart');
                 })
         }

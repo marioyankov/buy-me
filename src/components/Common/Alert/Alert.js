@@ -12,7 +12,7 @@ const Alert = () => {
     return (
         <article className={alert.type}>
             <span className="close-btn" onClick={hideAlert}>&times;</span>
-            <span className="alert-message">Alert {alert.message}</span>
+            <span className="alert-message">{alert.message}</span>
         </article>
     );
 };
