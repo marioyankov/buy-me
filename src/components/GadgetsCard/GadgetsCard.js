@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
+import './GadgetsCard.css';
+
 const GadgetsCard = () => {
     return (
         <section className="gadgets">
@@ -12,6 +14,6 @@ const GadgetsCard = () => {
             </article>
         </section>
     );
-}
+};
 
 export default GadgetsCard;

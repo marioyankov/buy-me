@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
+import './AutoCard.css';
+
 const AutoCard = () => {
     return (
         <section className="auto">
@@ -12,6 +14,6 @@ const AutoCard = () => {
             </article>
         </section>
     );
-}
+};
 
 export default AutoCard;

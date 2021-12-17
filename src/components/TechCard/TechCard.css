@@ -1,0 +1,44 @@
+.tech .tech-article {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 45px 120px;
+    border-radius: 12px;
+    box-shadow: 1px 1px 12px 3px white;
+}
+
+.tech .tech-title {
+    font-size: 47px;
+    color: white;
+    border-bottom: 2px solid white;
+    margin: 0;
+}
+
+.tech .tech-btn {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    border: 2px solid white;
+    padding: 15px 25px;
+    border-radius: 18px;
+    background: #1D2733;
+}
+
+.tech .tech-btn:hover {
+    cursor: pointer;
+    background: white;
+    color: #1D2733;
+    transition: all 0.3s ease;
+}
+
+.tech-img {
+    max-width: 45vw;
+    padding: 25px 0;
+}
+
+.tech-img img {
+    width: 100%;
+    object-fit: contain;
+}

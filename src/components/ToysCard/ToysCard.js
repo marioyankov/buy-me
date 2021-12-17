@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
+import './ToysCard.css';
+
 const ToysCard = () => {
     return (
         <section className="toys">
@@ -12,6 +14,6 @@ const ToysCard = () => {
             </article>
         </section>
     );
-}
+};
 
 export default ToysCard;
