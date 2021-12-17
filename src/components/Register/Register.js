@@ -27,12 +27,23 @@ const Register = () => {
                     navigate('/');
                 })
                 .catch(error => {
-                    authService.gotError(error);
+                    let errorCode = authService.gotError(error);
+                    if (errorCode === 3033) {
+                        addAlert('User already exists !', types.error);
+                    }
                 });
         } else {
             addAlert("Passwords don/'t match!", types.error);
         }
     };
+
+    const emailHandler = (e) => {
+        let currentEmail = e.target.value;
+
+        if (5 < (currentEmail.length) < 32) {
+            addAlert('Email must be between 5 and 32 symbols', types.error)
+        }
+    }
 
     return (
         <section className="register">
@@ -41,7 +52,7 @@ const Register = () => {
                     <h1 className="register-title">Register</h1>
 
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="example@example.com" />
+                    <input type="email" id="email" name="email" placeholder="example@example.com" onBlur={emailHandler} />
 
                     <label htmlFor="password">Password:</label>
                     <input type="password" name="password" id="password" />

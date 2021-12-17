@@ -35,7 +35,7 @@ const Edit = () => {
         let price = formData.get('product-price');
         let description = formData.get('product-description');
 
-        if (isAuthenticated(user) & user.objectId === product.ownerId) {
+        if (isAuthenticated(user) && user.objectId === product.ownerId) {
             productService.edit({
                 objectId,
                 ownerId: product.ownerId,
@@ -57,6 +57,18 @@ const Edit = () => {
         };
     };
 
+    const inputHandler = (e) => {
+        let currentInput = e.target.value;
+
+        if (currentInput.length > 32) {
+            addAlert(`${e.target.name} cannot be more than 32 symbols`, types.error)
+        }
+
+        if (currentInput <= 0) {
+            addAlert(`${e.target.name} must be minimum 1 symbol`, types.error)
+        }
+    }
+
     return (
         <section className="create">
             <form id="create-form" onSubmit={onProductEdit} method="PUT">
@@ -70,6 +82,7 @@ const Edit = () => {
                         id="product-name"
                         name="product-name"
                         defaultValue={product.name}
+                        onBlur={inputHandler}
                     />
 
                     <label htmlFor="product-type">Type: </label>
@@ -78,7 +91,7 @@ const Edit = () => {
                         id="product-type"
                         name="product-type"
                         defaultValue={product.type}
-
+                        onBlur={inputHandler}
                     />
 
                     <label htmlFor="imageUrl">ImageUrl: </label>
@@ -87,7 +100,7 @@ const Edit = () => {
                         id="imageUrl"
                         name="imageUrl"
                         defaultValue={product.imageUrl}
-
+                        onBlur={inputHandler}
                     />
 
                     <label htmlFor="product-price">Price: </label>
@@ -96,7 +109,7 @@ const Edit = () => {
                         id="product-price"
                         name="product-price"
                         defaultValue={product.price}
-
+                        onBlur={inputHandler}
                     />
 
                     <label htmlFor="product-description">Description: </label>

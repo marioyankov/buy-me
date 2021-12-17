@@ -5,6 +5,8 @@ import { gotError } from '../../services/authService';
 
 import * as productService from '../../services/productService';
 
+import './MyProducts.css'
+
 
 const MyProducts = () => {
     const { user } = useAuthContext();
@@ -25,7 +27,7 @@ const MyProducts = () => {
             <h1 className="my-products-title">My Products</h1>
             {myProducts.length > 0
                 ? myProducts.map(x => <ProductCard key={x.objectId} product={x} />)
-                : <h3>No products yet</h3>
+                : <h3 className="my-products-title">No products yet</h3>
             }
         </section>
     );

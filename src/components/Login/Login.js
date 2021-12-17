@@ -25,7 +25,10 @@ const Login = () => {
                 navigate('/');
             })
             .catch(error => {
-                authService.gotError(error);
+                let errorCode = authService.gotError(error);
+                if (errorCode === 3003) {
+                    addAlert('Invalid e-mail or password!', types.error);
+                }
             });
     };
 
