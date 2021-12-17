@@ -31,7 +31,7 @@ const CartProductCard = ({
 
     return (
         <>
-            <DialogBox show={showDialogBox} message={''} onCancel={() => setShowDialogBox(false)} onSave={onRemove} />
+            <DialogBox show={showDialogBox} message={'test'} onCancel={() => setShowDialogBox(false)} onSave={onRemove} />
 
             <section className="product">
                 <section className="product-img">

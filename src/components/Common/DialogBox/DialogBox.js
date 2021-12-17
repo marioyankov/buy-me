@@ -7,7 +7,7 @@ const DialogBox = ({
     onSave,
 }) => {
     return (
-        <section className='dialog-box' style={{display: show ? 'block' : 'none'}}>
+        <section className='dialog-box' style={{display: show ? 'flex' : 'none'}}>
             <article className='dialog-box-title'>
                 <h2 className='dialog-title'>Are you sure ?</h2>
                 <span className="dialog-close-btn" onClick={onCancel}>&times;</span>

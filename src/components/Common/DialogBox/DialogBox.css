@@ -1,0 +1,62 @@
+.dialog-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #495768;
+    width: 40vw;
+    /* height: 40vh; */
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px solid white;
+    border-radius: 12px;
+    box-shadow: 1px 1px 12px 3px white;
+}
+
+.dialog-box-title {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+    border-bottom: 2px solid white;
+}
+
+.dialog-close-btn {
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dialog-box-message {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+.dialog-message {
+    font-size: 20px;
+}
+
+.dialog-confirm-btn {
+    color: white;
+    background: #495768;
+    font-size: 20px;
+    border: 2px solid white;
+    padding: 10px 21px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 50px;
+}
+
+.dialog-confirm-btn:hover {
+    cursor: pointer;
+    background: white;
+    color: #1D2733;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+}
