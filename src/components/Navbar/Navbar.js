@@ -1,13 +1,10 @@
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContexts';
-
 import { NavLink } from 'react-router-dom';
+import { useAuthContext } from '../../contexts/AuthContexts';
+
 import './Navbar.css';
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext);
-
-    let currentUser = { ...user }
+    const { user } = useAuthContext();
 
     let guestNavigation = (
         <>
@@ -52,7 +49,7 @@ const Navbar = () => {
                         <NavLink className="active-link" to="/shop">Shop</NavLink>
                     </li>
 
-                    {currentUser.email
+                    {user.email
                         ? userNavigation
                         : guestNavigation
                     }

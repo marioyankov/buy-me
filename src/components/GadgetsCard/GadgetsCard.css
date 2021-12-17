@@ -43,3 +43,24 @@
     object-fit: contain;
 }
 
+/* responsive styling */
+
+@media (max-width: 810px) {
+    .gadgets .gadgets-title {
+        font-size: 40px;
+    }
+  
+    .gadgets .gadgets-btn {
+        font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 450px) {
+      .gadgets .gadgets-title {
+          font-size: 30px;
+      }
+    
+      .gadgets .gadgets-btn {
+          font-size: 15px;
+      }
+  }

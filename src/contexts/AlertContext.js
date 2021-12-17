@@ -6,9 +6,9 @@ export const types = {
     error: 'error',
     success: 'success',
     info: 'info',
-}
+};
 
-const initialAlert= {show: false, message: '', type: types.info}
+const initialAlert = {show: false, message: '', type: types.info};
 
 export const AlertProvider = ({children}) => {
     const [alert, setAlert] = useState(initialAlert);
@@ -23,7 +23,7 @@ export const AlertProvider = ({children}) => {
 
     const hideAlert = useCallback(() => {
         setAlert(initialAlert)
-    }, [])
+    }, []);
     
     return (
         <AlertContext.Provider value={{alert, addAlert, hideAlert}}>

@@ -15,11 +15,12 @@ const Logout = () => {
         authService.logout()
             .then(() => {
                 logout();
-                authService.userLoggedOut();
                 addAlert('You have successfully logged out!', types.success);
                 navigate('/');
             })
-            .catch(authService.gotError);
+            .catch(error => {
+                authService.gotError(error);
+            });
     }, [logout, navigate, addAlert])
 
     return null;

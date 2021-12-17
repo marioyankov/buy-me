@@ -45,6 +45,6 @@ function App() {
 			</AlertProvider>
 		</UserProvider>
 	);
-}
+};
 
 export default App;

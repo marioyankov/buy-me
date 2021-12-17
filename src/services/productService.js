@@ -1,5 +1,7 @@
 import { Backendless } from '../backendlessConfig';
 
+import { gotError } from './authService';
+
 export const getAllProducts = async () => {
     let result = await Backendless.Data.of('products').find();
 
@@ -36,22 +38,25 @@ export const create = async (product) => {
 };
 
 export const edit = async (product, userId) => {
-    if (product.ownerId === userId) {
-        let result = await Backendless.Data.of('products').save(product);
+    try {
+        if (product.ownerId === userId) {
+            let result = await Backendless.Data.of('products').save(product);
 
-        return result;
-    } else {
-        // notify
+            return result;
+        }
+    }catch (error) {
+        gotError(error);
     }
-
 };
 
 export const deleteProduct = async (product, userId) => {
-    if (product.ownerId === userId) {
-        let result = await Backendless.Data.of('products').remove(product);
-
-        return result;
-    } else {
-        //notify
+    try {
+        if (product.ownerId === userId) {
+            let result = await Backendless.Data.of('products').remove(product);
+            
+            return result;
+        }
+    }catch(error) {
+        return gotError(error);
     }
 };

@@ -4,7 +4,6 @@ import { useAuthContext } from '../../contexts/AuthContexts';
 import * as productService from '../../services/productService';
 import * as authService from '../../services/authService';
 
-
 import CartProductCard from './CartProductCard/CartProductCard';
 
 import './Cart.css';
@@ -22,8 +21,8 @@ const Cart = () => {
                 setCartProducts(result)
             })
             .catch(error => {
-                console.log(error);
-            })
+                authService.gotError(error);
+            });
     }, [user.objectId, cartProducts]);
 
     const onBuy = () => {
@@ -31,9 +30,10 @@ const Cart = () => {
             authService.buyCartProducts(user.objectId, cartProducts)
                 .then(() => {
                     navigate('/shop');
+                })
+                .catch(error => {
+                    authService.gotError(error);
                 });
-        }else {
-            // error
         };
     };
 
@@ -44,7 +44,7 @@ const Cart = () => {
             </section>
             {cartProducts.length > 0
                 ? cartProducts.map(x => <CartProductCard key={x.objectId} product={x} />)
-                : <h3 className='no-products-title'>No products in cart</h3>
+                : <h3 className='cart-title'>No products in cart</h3>
             }
             <section className='cart-total'>
                 <h3 className='products-total'>Total: {cartProducts.length}</h3>
@@ -53,7 +53,7 @@ const Cart = () => {
             </section>
 
         </article>
-    )
-}
+    );
+};
 
 export default Cart;

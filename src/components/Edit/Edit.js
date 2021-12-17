@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContexts';
 import { isAuthenticated } from '../../services/authService';
 import { useAlertContext, types } from '../../contexts/AlertContext';
+import { gotError } from '../../services/authService';
 
 import * as productService from '../../services/productService';
 
@@ -20,7 +21,7 @@ const Edit = () => {
                 setProduct(result)
             })
             .catch(error => {
-                console.log(error);
+                gotError(error);
             })
     }, [objectId]);
 
@@ -48,7 +49,9 @@ const Edit = () => {
                     addAlert('You have successfully edited the product!', types.success);
                     navigate('/my-products');
                 })
-
+                .catch(error => {
+                    gotError(error);
+                });
         } else {
             navigate('/my-products');
         };
@@ -108,7 +111,7 @@ const Edit = () => {
                 </article>
             </form>
         </section>
-    )
-}
+    );
+};
 
 export default Edit;

@@ -21,11 +21,12 @@ const Login = () => {
         authService.login(email, password, true)
             .then(authData => {
                 login(authData);
-                authService.userLoggedIn(authData);
                 addAlert('You have successfully logged in!', types.success);
                 navigate('/');
             })
-            .catch(authService.gotError);
+            .catch(error => {
+                authService.gotError(error);
+            });
     };
 
     return (
@@ -55,6 +56,6 @@ const Login = () => {
             </form>
         </section>
     );
-}
+};
 
 export default Login;

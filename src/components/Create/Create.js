@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAlertContext, types } from '../../contexts/AlertContext';
 import { isAuthenticated } from '../../services/authService';
 import { useAuthContext } from '../../contexts/AuthContexts';
+import { gotError } from '../../services/authService';
 import * as productService from '../../services/productService';
 
 
@@ -33,6 +34,9 @@ const Create = () => {
                 addAlert('You have successfully added a product!', types.success);
                 navigate('/shop')
             })
+            .catch(error => {
+                gotError(error);
+            });
         }
     };
 
@@ -82,7 +86,7 @@ const Create = () => {
                 </article>
             </form>
         </section>
-    )
-}
+    );
+};
 
 export default Create;

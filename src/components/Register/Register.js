@@ -1,14 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContexts';
 import { useAlertContext, types } from '../../contexts/AlertContext';
-import { isAuthenticated } from '../../services/authService';
 import * as authService from '../../services/authService';
 
 import './Register.css';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { login, user } = useAuthContext();
+    const { login } = useAuthContext();
     const { addAlert } = useAlertContext();
 
 
@@ -24,11 +23,12 @@ const Register = () => {
             authService.register(email, password)
                 .then(authData => {
                     login(authData);
-                    authService.userRegistered(authData);
                     addAlert('You have successfully registered!', types.success);
                     navigate('/');
                 })
-                .catch(authService.gotError);
+                .catch(error => {
+                    authService.gotError(error);
+                });
         } else {
             addAlert("Passwords don/'t match!", types.error);
         }
@@ -56,6 +56,6 @@ const Register = () => {
             </form>
         </section>
     );
-}
+};
 
 export default Register;

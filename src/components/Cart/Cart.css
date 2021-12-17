@@ -4,8 +4,7 @@
     align-items: center;
 }
 
-.cart-title,
-.no-products-title {
+.cart-title {
     color: white;
     font-size: 36px;
     letter-spacing: 3px;

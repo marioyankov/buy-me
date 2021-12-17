@@ -51,21 +51,9 @@ export const logout = async () => {
     return res;
 };
 
-export const userRegistered = (user) => {
-    console.log(`${user.email} has been registered`)
-}
-
 export const gotError = (error) => {
     //TODO: show notification
     console.log(`error message: ${error.message}`);
-}
-
-export const userLoggedIn = (user) => {
-    console.log(`${user.email} has logged in`);
-}
-
-export const userLoggedOut = () => {
-    console.log('user has been logged out');
 }
 
 export const isAuthenticated = (user) => {

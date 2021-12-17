@@ -11,9 +11,10 @@ const CartProductCard = ({
 
     const onRemove = () => {
         if (authService.isAuthenticated(user)) {
-            authService.removeCartProduct(user.objectId, product.objectId);
-        }else {
-            //error
+            authService.removeCartProduct(user.objectId, product.objectId)
+                .catch(error => {
+                    authService.gotError(error);
+                });
         }
     };
 

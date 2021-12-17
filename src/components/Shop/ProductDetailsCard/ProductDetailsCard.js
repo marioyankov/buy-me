@@ -21,8 +21,8 @@ const ProductDetailsCard = () => {
                 setProduct(result)
             })
             .catch(error => {
-                console.log(error);
-            })
+                authService.gotError(error);
+            });
     }, [objectId]);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const ProductDetailsCard = () => {
                 setCartProducts(result)
             })
             .catch(error => {
-                console.log(error);
+                authService.gotError(error);
             })
     }, [user.objectId])
 
@@ -42,6 +42,9 @@ const ProductDetailsCard = () => {
             productService.deleteProduct(product, user.objectId)
                 .then(() => {
                     navigate('/my-products');
+                })
+                .catch(error => {
+                    authService.gotError(error);
                 })
         } else {
             // notify
@@ -57,6 +60,9 @@ const ProductDetailsCard = () => {
             authService.updateUserCart(user.objectId, product.objectId)
                 .then(() => {
                     navigate('/cart');
+                })
+                .catch(error => {
+                    authService.gotError(error);
                 })
         }
     }
@@ -87,7 +93,7 @@ const ProductDetailsCard = () => {
                 )}
             </section>
         </section>
-    )
-}
+    );
+};
 
 export default ProductDetailsCard;

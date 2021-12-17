@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ProductCard from "../Shop/ProductCard";
 import { useAuthContext } from '../../contexts/AuthContexts';
+import { gotError } from '../../services/authService';
 
 import * as productService from '../../services/productService';
 
@@ -15,7 +16,7 @@ const MyProducts = () => {
                 setMyProducts(result)
             })
             .catch(error => {
-                console.log(error);
+                gotError(error);
             })
     }, [user.objectId]);
 
@@ -27,7 +28,7 @@ const MyProducts = () => {
                 : <h3>No products yet</h3>
             }
         </section>
-    )
-}
+    );
+};
 
 export default MyProducts;

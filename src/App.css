@@ -13,37 +13,3 @@
 body {
   background: #1D2733;
 }
-
-/* responsive styling */
-
-@media (max-width: 810px) {
-  .tech .tech-title,
-  .gadgets .gadgets-title,
-  .auto .auto-title,
-  .toys .toys-title {
-	  font-size: 45px;
-  }
-
-  .tech .tech-btn,
-  .gadgets .gadgets-btn,
-  .auto .auto-btn,
-  .toys .toys-btn {
-	  font-size: 20px;
-  }
-}
-
-@media (max-width: 450px) {
-	.tech .tech-title,
-	.gadgets .gadgets-title,
-	.auto .auto-title,
-	.toys .toys-title {
-		font-size: 32px;
-	}
-  
-	.tech .tech-btn,
-	.gadgets .gadgets-btn,
-	.auto .auto-btn,
-	.toys .toys-btn {
-		font-size: 15px;
-	}
-}
