@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContexts';
-import { useAlertContext, types } from '../../contexts/AlertContext';
+import { useAlertContext, alertTypes } from '../../contexts/AlertContext';
 
 import * as authService from '../../services/authService';
 
@@ -15,7 +15,7 @@ const Logout = () => {
         authService.logout()
             .then(() => {
                 logout();
-                addAlert('You have successfully logged out!', types.success);
+                addAlert('You have successfully logged out!', alertTypes.success);
                 navigate('/');
             })
             .catch(error => {

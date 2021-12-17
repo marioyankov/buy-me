@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 import { useAuthContext } from '../../contexts/AuthContexts';
-import { useAlertContext, types } from '../../contexts/AlertContext';
+import { useAlertContext, alertTypes } from '../../contexts/AlertContext';
 
 import * as authService from '../../services/authService';
 
@@ -21,13 +21,13 @@ const Login = () => {
         authService.login(email, password, true)
             .then(authData => {
                 login(authData);
-                addAlert('You have successfully logged in!', types.success);
+                addAlert('You have successfully logged in!', alertTypes.success);
                 navigate('/');
             })
             .catch(error => {
                 let errorCode = authService.gotError(error);
                 if (errorCode === 3003) {
-                    addAlert('Invalid e-mail or password!', types.error);
+                    addAlert('Invalid e-mail or password!', alertTypes.error);
                 }
             });
     };

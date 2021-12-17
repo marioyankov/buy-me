@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useAlertContext, types } from '../../contexts/AlertContext';
+import { useAlertContext, alertTypes } from '../../contexts/AlertContext';
 import { isAuthenticated } from '../../services/authService';
 import { useAuthContext } from '../../contexts/AuthContexts';
 import { gotError } from '../../services/authService';
@@ -31,7 +31,7 @@ const Create = () => {
                 price,
                 description
             }).then(() => {
-                addAlert('You have successfully added a product!', types.success);
+                addAlert('You have successfully added a product!', alertTypes.success);
                 navigate('/shop')
             })
             .catch(error => {
@@ -39,6 +39,21 @@ const Create = () => {
             });
         }
     };
+
+    const inputHandler = (e) => {
+        let currentInput = e.target.value;
+
+        let fields = {
+            'product-name': 'name',
+            'product-type': 'type',
+            'imageUrl': 'image url',
+            'product-price': 'price',
+        }
+
+        if (currentInput.length < 3 || currentInput.length > 32) {
+            addAlert(`Field ${fields[e.target.name]} should be between 3 and 32 symbols!`, alertTypes.error);
+        } 
+    }
 
     return (
         <section className="create">
@@ -52,6 +67,7 @@ const Create = () => {
                         type="text"
                         id="product-name"
                         name="product-name"
+                        onBlur={inputHandler}
                     />
 
                     <label htmlFor="product-type">Type: </label>
@@ -59,6 +75,7 @@ const Create = () => {
                         type="text"
                         id="product-type"
                         name="product-type"
+                        onBlur={inputHandler}
                     />
 
                     <label htmlFor="imageUrl">ImageUrl: </label>
@@ -66,6 +83,7 @@ const Create = () => {
                         type="text"
                         id="imageUrl"
                         name="imageUrl"
+                        onBlur={inputHandler}
                     />
 
                     <label htmlFor="product-price">Price: </label>
@@ -73,6 +91,7 @@ const Create = () => {
                         type="text"
                         id="product-price"
                         name="product-price"
+                        onBlur={inputHandler}
                     />
 
                     <label htmlFor="product-description">Description: </label>

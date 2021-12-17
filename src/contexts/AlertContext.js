@@ -2,18 +2,18 @@ import { createContext, useContext, useState, useCallback } from "react";
 
 export const AlertContext = createContext();
 
-export const types = {
+export const alertTypes = {
     error: 'error',
     success: 'success',
     info: 'info',
 };
 
-const initialAlert = {show: false, message: '', type: types.info};
+const initialAlert = {show: false, message: '', type: alertTypes.info};
 
 export const AlertProvider = ({children}) => {
     const [alert, setAlert] = useState(initialAlert);
 
-    const addAlert = useCallback((message, type = types.info) => {
+    const addAlert = useCallback((message, type = alertTypes.info) => {
         setAlert({show: true, message, type});
 
         setTimeout(() => {

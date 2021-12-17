@@ -1,13 +1,14 @@
 .error,
 .success,
 .info {
-    position: absolute;
+    position: fixed;
     font-size: 22px;
     width: 100%;
     padding: 20px;
     color: white;
     margin-bottom: 15px;
     text-align: center;
+    z-index: 1;
 }
 
 

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContexts';
-import { useAlertContext, types } from '../../contexts/AlertContext';
+import { useAlertContext, alertTypes } from '../../contexts/AlertContext';
 import * as authService from '../../services/authService';
 
 import './Register.css';
@@ -23,17 +23,17 @@ const Register = () => {
             authService.register(email, password)
                 .then(authData => {
                     login(authData);
-                    addAlert('You have successfully registered!', types.success);
+                    addAlert('You have successfully registered!', alertTypes.success);
                     navigate('/');
                 })
                 .catch(error => {
                     let errorCode = authService.gotError(error);
                     if (errorCode === 3033) {
-                        addAlert('User already exists !', types.error);
+                        addAlert('User already exists !', alertTypes.error);
                     }
                 });
         } else {
-            addAlert("Passwords don/'t match!", types.error);
+            addAlert("Passwords don/'t match!", alertTypes.error);
         }
     };
 
@@ -41,7 +41,7 @@ const Register = () => {
         let currentEmail = e.target.value;
 
         if (5 < (currentEmail.length) < 32) {
-            addAlert('Email must be between 5 and 32 symbols', types.error)
+            addAlert('Email must be between 5 and 32 symbols', alertTypes.error)
         }
     }
 

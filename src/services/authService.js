@@ -52,12 +52,9 @@ export const logout = async () => {
 };
 
 export const gotError = (error) => {
-    //TODO: show notification
-    console.log(`error message: ${error.message}`);
-    console.log(`error code: ${error.code}`);
     return error.code;
-}
+};
 
 export const isAuthenticated = (user) => {
     return Boolean(user.email);
-}
+};

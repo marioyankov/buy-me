@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContexts';
 import { isAuthenticated } from '../../services/authService';
-import { useAlertContext, types } from '../../contexts/AlertContext';
+import { useAlertContext, alertTypes } from '../../contexts/AlertContext';
 import { gotError } from '../../services/authService';
 
 import * as productService from '../../services/productService';
@@ -13,7 +13,6 @@ const Edit = () => {
     const [product, setProduct] = useState([]);
     const { objectId } = useParams();
     const { addAlert } = useAlertContext();
-
 
     useEffect(() => {
         productService.getOneProduct(objectId)
@@ -27,6 +26,7 @@ const Edit = () => {
 
     const onProductEdit = (e) => {
         e.preventDefault();
+
         let formData = new FormData(e.currentTarget);
 
         let name = formData.get('product-name');
@@ -46,7 +46,7 @@ const Edit = () => {
                 description
             }, user.objectId)
                 .then(() => {
-                    addAlert('You have successfully edited the product!', types.success);
+                    addAlert('You have successfully edited the product!', alertTypes.success);
                     navigate('/my-products');
                 })
                 .catch(error => {
@@ -60,13 +60,16 @@ const Edit = () => {
     const inputHandler = (e) => {
         let currentInput = e.target.value;
 
-        if (currentInput.length > 32) {
-            addAlert(`${e.target.name} cannot be more than 32 symbols`, types.error)
+        let fields = {
+            'product-name': 'name',
+            'product-type': 'type',
+            'imageUrl': 'image url',
+            'product-price': 'price',
         }
 
-        if (currentInput <= 0) {
-            addAlert(`${e.target.name} must be minimum 1 symbol`, types.error)
-        }
+        if (currentInput.length < 3 || currentInput.length > 32) {
+            addAlert(`Field ${fields[e.target.name]} should be between 3 and 32 symbols!`, alertTypes.error);
+        } 
     }
 
     return (

@@ -3,7 +3,7 @@ import { useAlertContext } from "../../../contexts/AlertContext";
 import './Alert.css';
 
 const Alert = () => {
-    const {alert, hideAlert} = useAlertContext();
+    const { alert, hideAlert } = useAlertContext();
 
     if (!alert.show) {
         return null;
