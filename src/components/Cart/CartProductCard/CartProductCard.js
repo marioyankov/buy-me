@@ -3,7 +3,6 @@ import { useAuthContext } from '../../../contexts/AuthContexts';
 import * as authService from '../../../services/authService';
 import DialogBox from '../../Common/DialogBox';
 
-
 import './CartProductCard.css';
 
 const CartProductCard = ({
@@ -11,11 +10,11 @@ const CartProductCard = ({
 }) => {
     const { user } = useAuthContext();
     const [showDialogBox, setShowDialogBox] = useState(false, '')
+    const message = 'Do you want to remove this product from your cart ?'
 
     const onConfirm = () => {
         setShowDialogBox(true);
-
-    }
+    };
 
     const onRemove = () => {
         if (authService.isAuthenticated(user)) {
@@ -31,7 +30,7 @@ const CartProductCard = ({
 
     return (
         <>
-            <DialogBox show={showDialogBox} message={'test'} onCancel={() => setShowDialogBox(false)} onSave={onRemove} />
+            <DialogBox show={showDialogBox} message={message} onCancel={() => setShowDialogBox(false)} onSave={onRemove} />
 
             <section className="product">
                 <section className="product-img">

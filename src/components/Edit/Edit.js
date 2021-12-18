@@ -63,12 +63,11 @@ const Edit = () => {
         let fields = {
             'product-name': 'name',
             'product-type': 'type',
-            'imageUrl': 'image url',
             'product-price': 'price',
         }
 
-        if (currentInput.length < 3 || currentInput.length > 32) {
-            addAlert(`Field ${fields[e.target.name]} should be between 3 and 32 symbols!`, alertTypes.error);
+        if (currentInput.length < 1 || currentInput.length > 32) {
+            addAlert(`Field ${fields[e.target.name]} should be between 1 and 32 symbols!`, alertTypes.error);
         } 
     }
 
@@ -103,7 +102,6 @@ const Edit = () => {
                         id="imageUrl"
                         name="imageUrl"
                         defaultValue={product.imageUrl}
-                        onBlur={inputHandler}
                     />
 
                     <label htmlFor="product-price">Price: </label>

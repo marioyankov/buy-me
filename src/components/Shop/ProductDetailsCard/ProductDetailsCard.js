@@ -15,8 +15,8 @@ const ProductDetailsCard = () => {
     const [cartProducts, setCartProducts] = useState([]);
     const { objectId } = useParams();
     const { addAlert } = useAlertContext();
-    const [showDialogBox, setShowDialogBox] = useState(false, '')
-
+    const [showDialogBox, setShowDialogBox] = useState(false, '');
+    const message = 'Do you want to delete this product ?';
 
     useEffect(() => {
         productService.getOneProduct(objectId)
@@ -89,7 +89,7 @@ const ProductDetailsCard = () => {
 
     return (
         <>
-            <DialogBox show={showDialogBox} message={''} onCancel={() => setShowDialogBox(false)} onSave={deleteHandler} />
+            <DialogBox show={showDialogBox} message={message} onCancel={() => setShowDialogBox(false)} onSave={deleteHandler} />
 
             <section className="product">
                 <section className="product-img">

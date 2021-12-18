@@ -25,7 +25,6 @@ export const UserProvider = ({ children }) => {
     );
 }
 
-
 export const useAuthContext = () => {
     const authState = useContext(AuthContext);
 
